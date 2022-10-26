@@ -1,0 +1,17 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  icon: 
+  groupname: MyString
+  classification_id: 1
+  limit: 1
+  user_id: 1
+  intoroduction: MyText
+
+two:
+  icon: 
+  groupname: MyString
+  classification_id: 1
+  limit: 1
+  user_id: 1
+  intoroduction: MyText

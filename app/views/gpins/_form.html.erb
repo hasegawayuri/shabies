@@ -1,0 +1,27 @@
+<%= form_with(model: gpin) do |form| %>
+  <% if gpin.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(gpin.errors.count, "error") %> prohibited this gpin from being saved:</h2>
+
+      <ul>
+        <% gpin.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :user_id %>
+    <%= form.number_field :user_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :group_id %>
+    <%= form.number_field :group_id %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>User:</strong>
+  <%= @gpin.user_id %>
+</p>
+
+<p>
+  <strong>Group:</strong>
+  <%= @gpin.group_id %>
+</p>
+
+<%= link_to 'Edit', edit_gpin_path(@gpin) %> |
+<%= link_to 'Back', gpins_path %>

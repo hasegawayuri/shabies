@@ -1,0 +1,2 @@
+class Gpin < ApplicationRecord
+end

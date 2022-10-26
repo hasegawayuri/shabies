@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Gpins</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>User</th>
+      <th>Group</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @gpins.each do |gpin| %>
+      <tr>
+        <td><%= gpin.user_id %></td>
+        <td><%= gpin.group_id %></td>
+        <td><%= link_to 'Show', gpin %></td>
+        <td><%= link_to 'Edit', edit_gpin_path(gpin) %></td>
+        <td><%= link_to 'Destroy', gpin, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Gpin', new_gpin_path %>

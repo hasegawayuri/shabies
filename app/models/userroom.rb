@@ -1,0 +1,2 @@
+class Userroom < ApplicationRecord
+end

@@ -1,0 +1,2 @@
+module BpinsHelper
+end

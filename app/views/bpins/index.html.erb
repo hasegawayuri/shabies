@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Bpins</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>User</th>
+      <th>Board</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @bpins.each do |bpin| %>
+      <tr>
+        <td><%= bpin.user_id %></td>
+        <td><%= bpin.board_id %></td>
+        <td><%= link_to 'Show', bpin %></td>
+        <td><%= link_to 'Edit', edit_bpin_path(bpin) %></td>
+        <td><%= link_to 'Destroy', bpin, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Bpin', new_bpin_path %>
