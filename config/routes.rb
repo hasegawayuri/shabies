@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  # get 'home/top'
+  get '/', to:'home#top' 
   resources :chats
   resources :rooms
   resources :classifications
