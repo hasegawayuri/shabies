@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_10_28_002104) do
+ActiveRecord::Schema.define(version: 2022_11_01_002032) do
 
   create_table "boards", force: :cascade do |t|
     t.integer "group_id"
@@ -68,6 +68,13 @@ ActiveRecord::Schema.define(version: 2022_10_28_002104) do
     t.integer "limit"
     t.integer "user_id"
     t.text "intoroduction"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "icons", force: :cascade do |t|
+    t.string "name"
+    t.binary "image"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
