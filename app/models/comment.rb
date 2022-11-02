@@ -1,4 +1,3 @@
 class Comment < ApplicationRecord
-    has_many :id
-    has_many :boards
+    belongs_to :board, optional: true
 end

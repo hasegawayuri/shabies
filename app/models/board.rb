@@ -1,5 +1,6 @@
 class Board < ApplicationRecord
-    #has_many :users
-    has_many :groups
+    belongs_to :user, optional: true
+    belongs_to :group, optional: true
     has_many :comments
+    has_many :bpins
 end

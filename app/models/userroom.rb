@@ -1,4 +1,4 @@
 class Userroom < ApplicationRecord
-    has_many :id
-    has_many :rooms
+    belongs_to :user, optional: true
+    belongs_to :room, optional: true
 end

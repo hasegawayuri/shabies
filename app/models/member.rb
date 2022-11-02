@@ -1,4 +1,4 @@
 class Member < ApplicationRecord
-    has_many :id
-    #has_many :groups
+    belongs_to :group, optional: true
+    belongs_to :user,optional: true
 end
