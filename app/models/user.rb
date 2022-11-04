@@ -11,6 +11,13 @@ class User < ApplicationRecord
     validates :password, length: { minimum: 8 }
     has_secure_password
 
-   # validates :name, presence: true
+    has_many :groups
+    has_many :chats
+    has_many :userrooms
+    has_many :gpins
+    has_many :bpins
+    has_many :members
+    has_many :boards
+#   validates :name, presence: true
 end
 

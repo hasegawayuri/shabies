@@ -1,6 +1,7 @@
 <h1>利用者情報</h1>
 
-<p>メールアドレス : <%= @user.mailaddress %></p>
-<p><%= link_to '登録解除', unsubscribe_path(@user), method: :delete, date: { monfirm: '本当に登録しますか？' } %></p>
+<p>メールアドレス : <%= current_user.mailaddress %></p>
+<p><%= link_to 'ログアウト', logout_path, method: :delete %></p>
+<p><%= link_to '登録解除', unsubscribe_path, method: :delete, date: { monfirm: '本当に登録しますか？' } %></p>
 
 
