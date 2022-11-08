@@ -18,6 +18,6 @@ class User < ApplicationRecord
     has_many :bpins
     has_many :members
     has_many :boards
-   # validates :name, presence: true
+#   validates :name, presence: true
 end
 

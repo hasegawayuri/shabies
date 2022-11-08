@@ -1,0 +1,79 @@
+ja:
+  activerecord:
+    models:
+      user: 利用者
+      room: チャットルーム
+      chat: チャット
+      group: グループ
+      userroom: ユーザールーム
+      board: 掲示板
+      bpin: ピン止め
+      gpin: ピン止め
+      member: 参加メンバー
+      comment: コメント
+      tag: タグ
+      classification: 系統
+
+    attributes: 
+      user:
+        name: ニックネーム
+        hobby: 趣味
+        mailaddress: メールアドレス
+        password: パスワード
+        password_confirmation: パスワード(確認)
+        age: 年齢
+        introduction: 一言・自己紹介
+        icon: アイコン
+      
+      room:
+        id: id
+
+      chat:
+        user_id: ニックネーム
+        message: メッセージ
+        room_id: 部屋
+        image: 画像
+
+      group:
+        icon: アイコン
+        groupname: グループ名
+        classification_id: 系統
+        limit: 人数制限
+        user_id: 作成者
+        introduction: 紹介文
+
+      userroom:
+        user_id: 利用者
+        room_id: 部屋
+
+      board:
+        group_id: グループ名 
+        icon: アイコン
+        message: メッセージ
+        image: 画像
+        user_id: 書き込み者
+
+      bpin:
+        user_id: 利用者
+        board_id: 掲示板
+
+      gpin:
+        user_id: 利用者
+        group_id: グループ
+
+      member:
+        user_id: 参加メンバー
+        group_id: 参加グループ
+
+      comment:
+        board_id: 掲示板
+        message: コメント
+        user_id: 書き込み者
+        image: 画像
+
+      tag:
+        hash: ハッシュタグ
+        group_id: グループ
+
+      classification:
+        classification: 系統名
