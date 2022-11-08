@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   # get 'home/top'
   get '/', to:'home#top' 
+  get '/messagelist', to: 'home#message'
   resources :icons
   resources :chats
   resources :rooms
