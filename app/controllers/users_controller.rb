@@ -1,5 +1,4 @@
 class UsersController < ApplicationController
-
     before_action :require_login, only: [:show, :destroy, :edit, :update]
 
     def new
@@ -16,6 +15,7 @@ class UsersController < ApplicationController
       end
     end
       def edit
+        @user = User.find(current_user.id)
       end
       def update
         @user = User.find(current_user.id)
@@ -45,7 +45,7 @@ class UsersController < ApplicationController
         params.require(:user).permit(:mailaddress, :password, :password_confirmation, :name)
       end
       def user_edit_params
-        params.require(:user).permit(:mailaddress, :password, :password_confirmation, :name)
+        params.require(:user).permit(:name, :age, :hobby, :introduction)
       end
 end
 
