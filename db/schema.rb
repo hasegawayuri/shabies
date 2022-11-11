@@ -67,7 +67,7 @@ ActiveRecord::Schema.define(version: 2022_11_01_002032) do
     t.integer "classification_id"
     t.integer "limit"
     t.integer "user_id"
-    t.text "intoroduction"
+    t.text "introduction"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

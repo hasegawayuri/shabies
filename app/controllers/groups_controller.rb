@@ -21,11 +21,11 @@ class GroupsController < ApplicationController
 
   # POST /groups or /groups.json
   def create
-    @group = Group.new(group_params)
-
+    @group = Group.new(group_attributes)
+   
     respond_to do |format|
       if @group.save
-        format.html { redirect_to group_url(@group), notice: "Group was successfully created." }
+        format.html { redirect_to group_url(@group), notice: "新たに#{group_params[:groupname]}を作成しました" }
         format.json { render :show, status: :created, location: @group }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -37,10 +37,10 @@ class GroupsController < ApplicationController
   # PATCH/PUT /groups/1 or /groups/1.json
   def update
     respond_to do |format|
-      if @group.update(group_params)
-        format.html { redirect_to group_url(@group), notice: "Group was successfully updated." }
+      if @group.update(group_attributes)
+        format.html { redirect_to group_url(@group), notice: "#{group_params[:groupname]}の設定を更新しました" }
         format.json { render :show, status: :ok, location: @group }
-      else
+     else
         format.html { render :edit, status: :unprocessable_entity }
         format.json { render json: @group.errors, status: :unprocessable_entity }
       end
@@ -52,9 +52,14 @@ class GroupsController < ApplicationController
     @group.destroy
 
     respond_to do |format|
-      format.html { redirect_to groups_url, notice: "Group was successfully destroyed." }
+      format.html { redirect_to groups_url, notice: "#{group_params[:groupname]}が削除されました" }
       format.json { head :no_content }
     end
+  end
+
+  def get_image
+    group = Group.find(params[:id])
+    send_data(group.icon,disposition: :inline)
   end
 
   private
@@ -65,6 +70,19 @@ class GroupsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def group_params
-      params.require(:group).permit(:icon, :groupname, :classification_id, :limit, :user_id, :intoroduction)
+      params.require(:group).permit(:icon, :groupname, :classification_id, :limit, :user_id, :introduction)
     end
+
+    def group_attributes
+      if group_params[:icon].blank?
+        {
+          groupname: group_params[:groupname], classification_id: group_params[:classification_id], limit: group_params[:limit], user_id: group_params[:user_id], introduction: group_params[:introduction]
+        }
+      else
+        {
+          icon: group_params[:icon].read, groupname: group_params[:groupname], classification_id: group_params[:classification_id], limit: group_params[:limit], user_id: group_params[:user_id], introduction: group_params[:introduction]
+        }
+      end
+    end
+
 end

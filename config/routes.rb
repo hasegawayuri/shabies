@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   resources :userrooms
   resources :groups
   get '/image_of_icons/:id', to: 'icons#get_image', as: 'image_of_icons' 
+  get '/image_of_groups/:id', to: 'groups#get_image', as: 'image_of_groups' 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   #以下追記
   get '/signup', to: 'users#new'

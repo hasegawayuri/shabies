@@ -6,7 +6,7 @@ class CreateGroups < ActiveRecord::Migration[6.1]
       t.integer :classification_id
       t.integer :limit
       t.integer :user_id
-      t.text :intoroduction
+      t.text :introduction
 
       t.timestamps
     end

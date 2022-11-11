@@ -17,7 +17,7 @@ class GroupsTest < ApplicationSystemTestCase
     fill_in "Classification", with: @group.classification_id
     fill_in "Groupname", with: @group.groupname
     fill_in "Icon", with: @group.icon
-    fill_in "Intoroduction", with: @group.intoroduction
+    fill_in "Introduction", with: @group.introduction
     fill_in "Limit", with: @group.limit
     fill_in "User", with: @group.user_id
     click_on "Create Group"
@@ -33,7 +33,7 @@ class GroupsTest < ApplicationSystemTestCase
     fill_in "Classification", with: @group.classification_id
     fill_in "Groupname", with: @group.groupname
     fill_in "Icon", with: @group.icon
-    fill_in "Intoroduction", with: @group.intoroduction
+    fill_in "Introduction", with: @group.introduction
     fill_in "Limit", with: @group.limit
     fill_in "User", with: @group.user_id
     click_on "Update Group"

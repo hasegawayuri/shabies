@@ -1,34 +1,36 @@
 <p id="notice"><%= notice %></p>
 
+<h2>グループ詳細</h2>
+
 <p>
-  <strong>Icon:</strong>
-  <%= @group.icon %>
+  <strong>アイコン:</strong>
+  <%= image_tag(url_for(image_of_groups_path(@group)),size:'100x100') %>
 </p>
 
 <p>
-  <strong>Groupname:</strong>
+  <strong>グループ名:</strong>
   <%= @group.groupname %>
 </p>
 
 <p>
-  <strong>Classification:</strong>
+  <strong>系統:</strong>
   <%= @group.classification_id %>
 </p>
 
 <p>
-  <strong>Limit:</strong>
+  <strong>人数制限:</strong>
   <%= @group.limit %>
 </p>
 
 <p>
-  <strong>User:</strong>
+  <strong>作成者:</strong>
   <%= @group.user_id %>
 </p>
 
 <p>
-  <strong>Intoroduction:</strong>
-  <%= @group.intoroduction %>
+  <strong>紹介文:</strong>
+  <%= @group.introduction %>
 </p>
 
-<%= link_to 'Edit', edit_group_path(@group) %> |
-<%= link_to 'Back', groups_path %>
+<%= link_to 'グループ設定編集', edit_group_path(@group) %> |
+<%= link_to '戻る', groups_path %>
