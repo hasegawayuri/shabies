@@ -4,5 +4,7 @@ class HomeController < ApplicationController
     
   end
   def message
+    @groups=Group.all
+    @members=Member.all
   end  
 end
