@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   # get 'home/top'
   get '/', to:'home#top' 
+  get '/messagelist', to: 'home#message'
   resources :icons
   resources :chats
   resources :rooms
@@ -13,6 +14,7 @@ Rails.application.routes.draw do
   resources :boards
   resources :userrooms
   resources :groups
+  resources :users
   get '/image_of_icons/:id', to: 'icons#get_image', as: 'image_of_icons' 
   get '/image_of_groups/:id', to: 'groups#get_image', as: 'image_of_groups' 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

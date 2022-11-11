@@ -10,7 +10,44 @@
     <%= javascript_include_tag 'application' %>
   </head>
 
-  <body>
-    <%= yield %>
-  </body>
+ <body>
+    <div class="container">
+      <%= yield %>
+      
+  <% if logged_in? %> 
+  <div class="fixed-bottom">
+    <div class="row">
+      <hr></hr>
+      <ul class="nav nav-tabs nav-fill">
+      　　<li class="nav-item">
+       　　 <a class="nav-link" href="http://localhost:3000/profile">
+                 <h5>ホーム</h5>
+            </a>
+          </li>
+      　  <li class="nav-item">
+       　　  <a class="nav-link" href="http://localhost:3000/messagelist">
+                <h6>メッセージ</h6>
+             </a>
+          </li> 
+          <li class="nav-item">
+       　　    <%= link_to edit_user_path(current_user.id), class: 'nav-link' do %>
+                   <h6>プロフィール</h6>
+               <% end %>
+          </li>
+          <li class="nav-item">
+                <a class="nav-link" href="#">             
+                   <h6>さがす</h6>
+                </a>
+          </li>
+          <li class="nav-item">
+               <a class="nav-link" href="#"> 
+                     <h6>✚</h6>
+               </a>
+          </li>
+      </ul>
+    </div>
+  </div>
+  <% end %>
+    </div>
+ </body>
 </html>

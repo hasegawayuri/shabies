@@ -7,8 +7,8 @@ class User < ApplicationRecord
     validates :mailaddress, format: { with: VALID_MAILADDRESS_REGEX }
     validates :mailaddress, uniqueness: { case_sensitive: false }
 
-    validates :password, presence: true
-    validates :password, length: { minimum: 8 }
+    validates :password, presence: true, on: :create
+    validates :password, length: { minimum: 8 }, on: :create
     has_secure_password
 
     has_many :groups
