@@ -20,7 +20,7 @@ class UsersController < ApplicationController
       def update
         @user = User.find(current_user.id)
         respond_to do |format|
-          if @user.update(user_edit_params)
+          if @user.update(user_attributes)
             format.html { redirect_to user_url(@user), notice: "User was successfully updated." }
             format.json { render :show, status: :ok, location: @user }
           else
@@ -40,12 +40,29 @@ class UsersController < ApplicationController
       redirect_to signup_path
     end
 
+    def get_image
+      user = User.find(params[:id])
+      send_data(user.icon,disposition: :inline)
+    end
+
     private
       def user_params
         params.require(:user).permit(:mailaddress, :password, :password_confirmation, :name)
       end
       def user_edit_params
-        params.require(:user).permit(:name, :age, :hobby, :introduction)
+        params.require(:user).permit(:name, :age, :hobby, :introduction, :icon)
       end
+      def user_attributes
+        if user_edit_params[:icon].blank?
+          {
+            name: user_edit_params[:name], age: user_edit_params[:age], hobby: user_edit_params[:hobby], introduction: user_edit_params[:introduction]
+          }
+        else
+          {
+            icon: user_edit_params[:icon].read, name: user_edit_params[:name], age: user_edit_params[:age], hobby: user_edit_params[:hobby], introduction: user_edit_params[:introduction]
+          }
+        end
+      end
+  
 end
 
