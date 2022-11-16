@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   # get 'home/top'
   get '/', to:'home#top' 
   get '/messagelist', to: 'home#message'
+  get '/search', to: 'home#search'
   resources :icons
   resources :chats
   resources :rooms
@@ -23,6 +24,7 @@ Rails.application.routes.draw do
   get '/signup', to: 'users#new'
   post '/signup', to: 'users#create'
   get '/profile', to: 'users#show'
+  get '/search', to: 'users#edit'
   delete '/unsubscribe', to: 'users#destroy'
   get '/login', to: 'sessions#new'
   post '/login', to: 'sessions#create'

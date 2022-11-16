@@ -13,27 +13,27 @@
 
   <div class="field">
     <%= form.label :画像 %>
-    <%= form.file_field :icon %>
+    <%= form.file_field :icon, class: "form-control" %>
   </div>
 
   <div class="field">
     <%= form.label :ニックネーム %>
-    <%= form.text_field :name %>
+    <%= form.text_field :name, class: "form-control" %>
   </div>
 
   <div class="field">
     <%= form.label :年齢 %>
-    <%= form.number_field :age %>
+    <%= form.number_field :age, class: "form-control" %>
   </div>
 
   <div class="field">
     <%= form.label :趣味 %>
-    <%= form.text_area :hobby %>
+    <%= form.text_area :hobby, class: "form-control" %>
   </div>
 
   <div class="field">
     <%= form.label :自己紹介文 %>
-    <%= form.text_area :introduction %>
+    <%= form.text_area :introduction, class: "form-control" %>
   </div>
 
   <div class="actions">
