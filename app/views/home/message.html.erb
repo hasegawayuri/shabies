@@ -18,15 +18,15 @@
   <!--パネル部分-->
   <div class="tab-content" id="myTabContent">
     <div class="tab-pane fade show active" id="group" role="tabpanel" aria-labelledby="group-tab">
-      <table>
+      <table class="table table-striped">
   <thead>
     <tr>
-      <th>Icon</th>
-      <th>Groupname</th>
-      <th>Classification</th>
-      <th>Limit</th>
-      <th>User</th>
-      <th>Intoroduction</th>
+      <th>アイコン</th>
+      <th>グループ名</th>
+      <th>統計</th>
+      <th>人数制限</th>
+      <th>作成者</th>
+      <th>紹介文</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -34,32 +34,26 @@
   <tbody>
     <% @groups.each do |group| %>
       <tr>
-        <td><%= group.icon %></td>
-        <td><%= image_tag(url_for(image_of_groups_path(group)),size:'100x100') %></td>
-        <!--<td><% if icon.name.present? %>
-          <br>
-          <%= image_tag icon.name %>
-          <% end %>
-        </td>-->
+        <td><%= image_tag(url_for(image_of_groups_path(group)),size:'100x100',class:"rounded-circle") %></td>
         <td><%= group.groupname %></td>
         <td><%= group.classification_id %></td>
         <td><%= group.limit %></td>
-        <td><%= group.user_id %></td>
-        <td><%= group.intoroduction %></td>
-        <td><%= link_to 'Show', group %></td>
-        <td><%= link_to 'Edit', edit_group_path(group) %></td>
-        <td><%= link_to 'Destroy', group, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= group.user.name %></td>
+        <td><%= group.introduction %></td>
+        <td><%= link_to '掲示板', boards_path %></td>
+        <td><%= link_to '編集', edit_group_path(group) %></td>
+        <td><%= link_to '削除', group, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
     </div>
     <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-      <table>
+      <table class="table table-striped">
   <thead>
     <tr>
-      <th>User</th>
-      <th>Group</th>
+      <th>ニックネーム</th>
+      <th>グループ名</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -67,11 +61,11 @@
   <tbody>
     <% @members.each do |member| %>
       <tr>
-        <td><%= member.user_id %></td>
-        <td><%= member.group_id %></td>
+        <td><%= member.user.name %></td>
+        <td><%= member.group.groupname %></td>
         <td><%= link_to 'Show', member %></td>
-        <td><%= link_to 'Edit', edit_member_path(member) %></td>
-        <td><%= link_to 'Destroy', member, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to '編集', edit_member_path(member) %></td>
+        <td><%= link_to '削除', member, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
