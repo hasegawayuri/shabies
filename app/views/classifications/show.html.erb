@@ -1,9 +1,10 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Classification:</strong>
+  <strong>系統名:</strong>
   <%= @classification.classification %>
 </p>
 
-<%= link_to 'Edit', edit_classification_path(@classification) %> |
-<%= link_to 'Back', classifications_path %>
+<%= link_to '編集', edit_classification_path(@classification) %> |
+ <td><%= link_to '削除', @classification, method: :delete, data: { confirm: '削除しますか？' } %></td> |
+<%= link_to '戻る', classifications_path %>

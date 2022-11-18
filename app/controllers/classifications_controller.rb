@@ -25,7 +25,7 @@ class ClassificationsController < ApplicationController
 
     respond_to do |format|
       if @classification.save
-        format.html { redirect_to classification_url(@classification), notice: "Classification was successfully created." }
+        format.html { redirect_to classification_url(@classification), notice: "#{classification_params[:classification]}が登録されました" }
         format.json { render :show, status: :created, location: @classification }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -38,7 +38,7 @@ class ClassificationsController < ApplicationController
   def update
     respond_to do |format|
       if @classification.update(classification_params)
-        format.html { redirect_to classification_url(@classification), notice: "Classification was successfully updated." }
+        format.html { redirect_to classification_url(@classification), notice: "#{classification_params[:classification]}に更新されました" }
         format.json { render :show, status: :ok, location: @classification }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -49,10 +49,11 @@ class ClassificationsController < ApplicationController
 
   # DELETE /classifications/1 or /classifications/1.json
   def destroy
+    classification = @classification.classification
     @classification.destroy
 
     respond_to do |format|
-      format.html { redirect_to classifications_url, notice: "Classification was successfully destroyed." }
+      format.html { redirect_to classifications_url, notice: "#{classification}が削除されました" }
       format.json { head :no_content }
     end
   end

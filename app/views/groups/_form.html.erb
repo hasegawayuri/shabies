@@ -23,7 +23,7 @@
 
   <div class="field">
     <%= form.label :classification_id %>
-    <%= form.number_field :classification_id %>
+    <%= form.select :classification_id, Classification.all.map { |c| [c.classification, c.id] } %>
   </div>
 
   <div class="field">
@@ -32,8 +32,7 @@
   </div>
 
   <div class="field">
-    <%= form.label :user_id %>
-    <%= form.number_field :user_id %>
+    <%= form.hidden_field :user_id, value: current_user.id %>
   </div>
 
   <div class="field">
