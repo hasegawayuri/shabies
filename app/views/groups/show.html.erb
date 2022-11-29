@@ -33,6 +33,7 @@
   <%= @group.introduction %>
 </p>
 
+<%= link_to '掲示板', boards_path %>|
 <%= link_to 'グループ設定編集', edit_group_path(@group) %> |
 <%= link_to 'グループ削除', @group, method: :delete, data: { confirm: 'グループが削除されます。実行しますか？' } %> |
 

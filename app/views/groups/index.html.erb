@@ -16,6 +16,7 @@
       <tr>
         <td><%= image_tag(url_for(image_of_groups_path(group)),size:'100x100') %></td>
         <td><%= group.groupname %></td>
+        <td><%= link_to '掲示板', boards_path %></td>
         <td><%= link_to 'グループ詳細', group %></td>
         <td><%= link_to 'グループ設定編集', edit_group_path(group) %></td>
       </tr>

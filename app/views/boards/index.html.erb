@@ -1,11 +1,10 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Boards</h1>
+<h1>の掲示板</h1>
 
 <table>
   <thead>
     <tr>
-      <th>Group</th>
       <th>掲示物</th>
       <th>画像</th>
       <th>アイコン</th>
@@ -17,14 +16,12 @@
   <tbody>
     <% @boards.each do |board| %>
       <tr>
-        <td><%= board.group_id %></td>
         <td><%= board.icon %></td>
         <td><%= board.message %></td>
         <td><%= board.image %></td>
         <td><%= board.user_id %></td>
-        <td><%= link_to 'Show', board %></td>
-        <td><%= link_to 'Edit', edit_board_path(board) %></td>
-        <td><%= link_to 'Destroy', board, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to '投稿内容編集', edit_board_path(board) %></td>
+        <td><%= link_to '投稿内容削除', board, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -32,4 +29,4 @@
 
 <br>
 
-<%= link_to 'New Board', new_board_path %>
+<%= link_to '投稿', new_board_path %>

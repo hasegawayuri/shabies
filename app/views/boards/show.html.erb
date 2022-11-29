@@ -25,5 +25,5 @@
   <%= @board.user_id %>
 </p>
 
-<%= link_to 'Edit', edit_board_path(@board) %> |
-<%= link_to 'Back', boards_path %>
+<%= link_to '削除', @board, method: :delete, data: { confirm: '投稿内容を削除しますか？' } %> |
+<%= link_to '戻る', boards_path %>

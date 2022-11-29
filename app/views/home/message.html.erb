@@ -23,7 +23,7 @@
     <tr>
       <th>アイコン</th>
       <th>グループ名</th>
-      <th>統計</th>
+      <th>系統</th>
       <th>人数制限</th>
       <th>作成者</th>
       <th>紹介文</th>
@@ -36,7 +36,7 @@
       <tr>
         <td><%= image_tag(url_for(image_of_groups_path(group)),size:'100x100',class:"rounded-circle") %></td>
         <td><%= group.groupname %></td>
-        <td><%= group.classification_id %></td>
+        <td><%= group.classification.classification %></td>
         <td><%= group.limit %></td>
         <td><%= group.user.name %></td>
         <td><%= group.introduction %></td>
