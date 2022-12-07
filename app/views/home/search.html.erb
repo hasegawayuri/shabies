@@ -1,20 +1,24 @@
 <h2><center>検索画面</center></h2>
  <hr></hr>
  <br></br>
+
+<%= form_with url: groups_path, local: true, method: :get do |f| %>
+
 <div class="input-group">
-  <input type="text" class="form-control" placeholder="">
-  
+  <%= f.text_field :keyword, class: "form-control", placeholder: "" %>
 </div>
+<!--
 <ul>
       <br></br>
      <center><button class="btn btn-primary" type="button">検索</button></center>
 </ul>
+-->
   <br></br>
   <hr></hr>
   <br></br>
   <h2>系統</h2>
 
-<%= select_tag "classification", options_from_collection_for_select(Classification.all,"id","classification"),class:"form-select form-select-lg mb-3" %>
+<%= f.select :classification, options_from_collection_for_select(Classification.all,"id", "classification"),{ include_blank: true }, class: "form-select form-select-lg mb-3" %>
 
   <br><br></br></br>
   <h2>ハッシュタグ</h2>
@@ -25,10 +29,11 @@
   <option value="2">Two</option>
   <option value="3">Three</option>
 </select>
+
+
 <div class="input-group">
- 
-  <input type="text" class="form-control" placeholder="#をつけて検索">
-  
+  <%= f.text_field :hash_tag, class: "form-control", placeholder: "＃をつけて検索" %>
 </div>
  <br></br>
-<center><button class="btn btn-primary" type="button">検索</button></center>
+<center><%= f.submit "検索", class: "btn btn-primary" %></center>
+<% end %>
