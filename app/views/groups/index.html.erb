@@ -24,7 +24,7 @@
             <% end %>
           <% else %>
              <% link_to '脱退', member, method: :delete, data: { confirm:
-             "#{group.groupname}グループから脱退しますか？" %>
+             "#{group.groupname}グループから脱退しますか？" } %>
           <% end %>
         </td>             
         <td><%= image_tag(url_for(image_of_groups_path(group)),size:'100x100') %></td>
