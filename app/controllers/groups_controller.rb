@@ -3,7 +3,28 @@ class GroupsController < ApplicationController
 
   # GET /groups or /groups.json
   def index
-    @groups = Group.all
+    search = false
+    if params[:commit] == "検索"
+      session[:search_commit] = params[:commit]
+      session[:search_keyword] = params[:keyword]
+      session[:search_classification] = params[:classification]
+      session[:search_hash_tag] = params[:hash_tag]
+      search = true
+    else
+      if session[:search_commit].nil?
+        search = false
+      else
+        search = true
+      end
+    end
+
+    if search == true
+      @groups = Group.all
+      @groups = @groups .where(groupname: session[:search_keyword]) unless session[:search_keyword].blank?
+      @groups = @groups .where(classification_id: session[:search_classification]) unless session[:search_classification].blank?
+    else
+      @groups = Group.all
+    end
   end
 
   # GET /groups/1 or /groups/1.json
