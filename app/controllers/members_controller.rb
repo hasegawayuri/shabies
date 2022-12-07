@@ -25,7 +25,7 @@ class MembersController < ApplicationController
 
     respond_to do |format|
       if @member.save
-        format.html { redirect_to member_url(@member), notice: "Member was successfully created." }
+        format.html { redirect_to groups_url(@member), notice: "Member was successfully created." }
         format.json { render :show, status: :created, location: @member }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -52,7 +52,7 @@ class MembersController < ApplicationController
     @member.destroy
 
     respond_to do |format|
-      format.html { redirect_to members_url, notice: "Member was successfully destroyed." }
+      format.html { redirect_to groups_url, notice: "Member was successfully destroyed." }
       format.json { head :no_content }
     end
   end
