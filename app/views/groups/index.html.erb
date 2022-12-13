@@ -23,7 +23,7 @@
                  <%= f.submit "参加" %>
             <% end %>
           <% else %>
-             <% link_to '脱退', member, method: :delete, data: { confirm:
+             <%= link_to '脱退', member, method: :delete, data: { confirm:
              "#{group.groupname}グループから脱退しますか？" } %>
           <% end %>
         </td>             
