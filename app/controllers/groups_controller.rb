@@ -22,7 +22,9 @@ class GroupsController < ApplicationController
   # POST /groups or /groups.json
   def create
     @group = Group.new(group_attributes)
-   
+    member = @group.members.build
+    member.user_id = current_user.id
+      
     respond_to do |format|
       if @group.save
         format.html { redirect_to group_url(@group), notice: "新たに#{group_params[:groupname]}を作成しました" }
@@ -36,6 +38,8 @@ class GroupsController < ApplicationController
 
   # PATCH/PUT /groups/1 or /groups/1.json
   def update
+    member = @group.members.build
+    member.user_id = current_user.id
     respond_to do |format|
       if @group.update(group_attributes)
         format.html { redirect_to group_url(@group), notice: "#{group_params[:groupname]}の設定を更新しました" }

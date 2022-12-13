@@ -42,7 +42,7 @@
         <td><%= group.introduction %></td>
         <td><%= link_to '掲示板', boards_path %></td>
         <td><%= link_to '編集', edit_group_path(group) %></td>
-        <td><%= link_to '削除', group, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to '脱退', group, method: :delete, data: { confirm: 'このグループを脱退しますか？' } %></td>
       </tr>
     <% end %>
   </tbody>

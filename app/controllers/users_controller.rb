@@ -32,7 +32,15 @@ class UsersController < ApplicationController
     
 
     def show
-     @user = User.find(current_user.id)
+      @user = User.find(current_user.id)
+
+      @groups=Group.joins(:members).where(members:{user_id:current_user.id})
+
+      group_ids = []
+      @groups.each do |group|
+        group_ids.push(group.id)
+      end
+      @members = Member.where(group_id: group_ids).select(:user_id).distinct
     end
 
     def destroy

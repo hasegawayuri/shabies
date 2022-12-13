@@ -1,32 +1,35 @@
 <p id="notice"><%= notice %></p>
 
-<h1>の掲示板</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>掲示物</th>
-      <th>画像</th>
-      <th>アイコン</th>
-      <th>投稿者</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @boards.each do |board| %>
-      <tr>
-        <td><%= board.icon %></td>
-        <td><%= board.message %></td>
-        <td><%= board.image %></td>
-        <td><%= board.user_id %></td>
-        <td><%= link_to '投稿内容編集', edit_board_path(board) %></td>
-        <td><%= link_to '投稿内容削除', board, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+<center><h1><%= "の掲示板" %></h1></center>
 
 <br>
 
-<%= link_to '投稿', new_board_path %>
+<div align="right"><%= link_to '投稿', new_board_path %></div>
+<div align="left"><%= link_to 'グループ詳細', @group  %>
+
+<br>
+<tbody>
+  <% @boards.each do |board| %>
+    <tr>
+      <br>
+      <td><%= board.icon %></td>
+      <br><br>
+      <td><%= board.message %></td>
+      </br></br>
+      <br><br>
+      <td><%= board.image %></td>
+      </br></br>
+      <br>
+      <td><%= board.user_id %> |</td>
+      <td><%= link_to 'コメント', new_comment_path %> |</td>
+      <td><%= link_to '編集', edit_board_path(board) %> |</td>
+      <td><%= link_to '×', board, method: :delete, data: { confirm: 'この投稿を削除しますか？' } %></td>
+    </tr>
+    <br>
+  <% end %>
+</tbody>
+
+
+<br>
+
+
