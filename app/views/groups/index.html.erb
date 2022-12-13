@@ -14,6 +14,18 @@
   <tbody>
     <% @groups.each do |group| %>
       <tr>
+        <td>
+          <% member = Member.where(group_id: group.id, user_id: current_user.id).first%>
+          <% if member.nil? %>
+            <%= form_with(model: Member.new) do |f| %>
+                 <%= f.hidden_field :group_id, :value => group.id %> 
+                 <%= f.hidden_field :user_id, :value => current_user.id %>
+                 <%= f.submit "参加" %>
+            <% end %>
+          <% else %>
+             <%= link_to '脱退', member, method: :delete, data: { confirm: "#{group.groupname}グループから脱退しますか？" } %>
+          <% end %>
+        </td>             
         <td><%= image_tag(url_for(image_of_groups_path(group)),size:'100x100',class:"rounded-circle") %></td>
         <td><%= group.groupname %></td>
         <td><%= link_to '掲示板', boards_path %></td>
