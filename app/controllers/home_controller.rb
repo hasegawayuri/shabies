@@ -1,16 +1,14 @@
 class HomeController < ApplicationController
   skip_before_action :require_login, only: [:top]
   def top
-    
   end
   def message
-    @groups=Group.all
-    @members=Member.all
+    @groups=Group.joins(:members).where(members: { user_id: current_user.id })
+
+    group_ids = []
+    @groups.each do |group|
+      group_ids.push(group.id)
+    end
+     @members = Member.where(group_id: group_ids)
   end
-  def search
-    session[:search_commit] = nil
-    session[:search_keyword] = nil
-    session[:search_classification] = nil
-    session[:search_hash_tag] = nil
-  end  
 end

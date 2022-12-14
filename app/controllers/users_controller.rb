@@ -7,6 +7,12 @@ class UsersController < ApplicationController
 
     def create
       @user = User.new(user_params)
+
+      image_path = Rails.root.join("public/images/", "rails.png")
+      File.open(image_path, "r+b") do |f|
+        @user.icon = f.read
+      end
+
       if @user.save
         log_in(@user)
         redirect_to profile_path
