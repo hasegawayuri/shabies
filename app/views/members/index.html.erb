@@ -18,7 +18,7 @@
         <td><%= member.group_id %></td>
         <td><%= link_to 'メンバー詳細', member %></td>
         <td><%= link_to 'メンバー編集', edit_member_path(member) %></td>
-        <td><%= link_to 'メンバー削除', member, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to '脱退', member, method: :delete, data: { confirm: 'このグループを脱退しますか？' } %></td>
       </tr>
     <% end %>
   </tbody>

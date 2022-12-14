@@ -1,29 +1,25 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Group:</strong>
-  <%= @board.group_id %>
-</p>
-
-<p>
-  <strong>Icon:</strong>
+  <strong></strong>
   <%= @board.icon %>
 </p>
 
 <p>
-  <strong>Message:</strong>
+  <strong>内容</strong>
   <%= @board.message %>
 </p>
 
 <p>
-  <strong>Image:</strong>
+  <strong>画像</strong>
   <%= @board.image %>
 </p>
 
 <p>
-  <strong>User:</strong>
+  <strong>投稿者</strong>
   <%= @board.user_id %>
 </p>
+
 
 <%= link_to '削除', @board, method: :delete, data: { confirm: '投稿内容を削除しますか？' } %> |
 <%= link_to '戻る', boards_path %>

@@ -23,11 +23,10 @@
                  <%= f.submit "参加" %>
             <% end %>
           <% else %>
-             <%= link_to '脱退', member, method: :delete, data: { confirm:
-             "#{group.groupname}グループから脱退しますか？" } %>
+             <%= link_to '脱退', member, method: :delete, data: { confirm: "#{group.groupname}グループから脱退しますか？" } %>
           <% end %>
         </td>             
-        <td><%= image_tag(url_for(image_of_groups_path(group)),size:'100x100') %></td>
+        <td><%= image_tag(url_for(image_of_groups_path(group)),size:'100x100',class:"rounded-circle") %></td>
         <td><%= group.groupname %></td>
         <td><%= link_to '掲示板', boards_path %></td>
         <td><%= link_to 'グループ詳細', group %></td>

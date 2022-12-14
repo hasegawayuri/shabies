@@ -29,9 +29,27 @@
     <div class="col">
        <br><br>    
          <p class="fs-3">グループ</p>
+
+         <div class="row">
+         <% @groups.each do |group| %>
+           <div class="col-md-2">
+             <%= image_tag(url_for(image_of_groups_path(group)),size:'100x100',class:"rounded-circle") %>
+           </div>
+         <% end %>
+         </div>
+
        </br></br>
        <br><br>
          <p class="fs-3">個人</p>
+
+         <div class="row">
+         <% @members.each do |member| %>
+           <div class="col-md-2">
+             <%= image_tag(url_for(image_of_users_path(member.user_id)),size:'100x100',class:"rounded-circle") %>
+           </div>
+         <% end %>
+         </div>
+
        </br></br>
        <br><br>
          <p class="fs-3">自分が作成した他グループ</p>
