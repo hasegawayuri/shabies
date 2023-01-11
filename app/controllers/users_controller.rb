@@ -7,6 +7,12 @@ class UsersController < ApplicationController
 
     def create
       @user = User.new(user_params)
+
+      image_path = Rails.root.join("public/images/", "rails.png")
+      File.open(image_path, "r+b") do |f|
+        @user.icon = f.read
+      end
+
       if @user.save
         log_in(@user)
         redirect_to profile_path
@@ -32,7 +38,15 @@ class UsersController < ApplicationController
     
 
     def show
-     @user = User.find(current_user.id)
+      @user = User.find(current_user.id)
+
+      @groups=Group.joins(:members).where(members:{user_id:current_user.id})
+
+      group_ids = []
+      @groups.each do |group|
+        group_ids.push(group.id)
+      end
+      @members = Member.where(group_id: group_ids).select(:user_id).distinct
     end
 
     def destroy

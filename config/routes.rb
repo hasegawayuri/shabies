@@ -19,6 +19,8 @@ Rails.application.routes.draw do
   get '/image_of_icons/:id', to: 'icons#get_image', as: 'image_of_icons' 
   get '/image_of_groups/:id', to: 'groups#get_image', as: 'image_of_groups' 
   get '/image_of_users/:id', to: 'users#get_image', as: 'image_of_users' 
+  get '/image_of_boards/:id', to: 'boards#get_image', as: 'image_of_boards'
+  get '/image_of_comments/:id', to: 'comments#get_image', as: 'image_of_comments'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   #以下追記
   get '/signup', to: 'users#new'

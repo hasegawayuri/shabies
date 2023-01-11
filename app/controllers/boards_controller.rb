@@ -25,7 +25,7 @@ class BoardsController < ApplicationController
 
     respond_to do |format|
       if @board.save
-        format.html { redirect_to board_url(@board), notice: "Board was successfully created." }
+        format.html { redirect_to board_url(@board), notice: "投稿が完了しました" }
         format.json { render :show, status: :created, location: @board }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -38,7 +38,7 @@ class BoardsController < ApplicationController
   def update
     respond_to do |format|
       if @board.update(board_params)
-        format.html { redirect_to board_url(@board), notice: "Board was successfully updated." }
+        format.html { redirect_to board_url(@board), notice: "投稿内容を修正しました" }
         format.json { render :show, status: :ok, location: @board }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -52,9 +52,14 @@ class BoardsController < ApplicationController
     @board.destroy
 
     respond_to do |format|
-      format.html { redirect_to boards_url, notice: "Board was successfully destroyed." }
+      format.html { redirect_to boards_url, notice: "投稿内容が削除されました" }
       format.json { head :no_content }
     end
+  end
+
+  def get_image
+    board = Board.find(params[:id])
+    send_data(board.image,disposition: :inline)
   end
 
   private
@@ -67,4 +72,9 @@ class BoardsController < ApplicationController
     def board_params
       params.require(:board).permit(:group_id, :icon, :message, :image, :user_id)
     end
+
+    def board_name
+      groupname = @group.groupname
+    end
+
 end

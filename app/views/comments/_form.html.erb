@@ -12,8 +12,7 @@
   <% end %>
 
   <div class="field">
-    <%= form.label :board_id %>
-    <%= form.number_field :board_id %>
+    <%= form.hidden_field :board_id %>
   </div>
 
   <div class="field">
@@ -22,18 +21,16 @@
   </div>
 
   <div class="field">
-    <%= form.label :user_id %>
-    <%= form.text_field :user_id %>
+    <%= form.hidden_field :user_id, value: current_user.id %>
   </div>
 
   <div class="field">
-    <%= form.label :integer %>
-    <%= form.text_field :integer %>
+    <%= form.hidden_field :integer %>
   </div>
 
   <div class="field">
     <%= form.label :image %>
-    <%= form.text_field :image %>
+    <%= form.file_field :image %>
   </div>
 
   <div class="actions">
