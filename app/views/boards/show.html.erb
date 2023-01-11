@@ -1,25 +1,63 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong></strong>
   <%= @board.icon %>
 </p>
 
 <p>
-  <strong>内容</strong>
+  <strong>投稿者:</strong>
+  <%= @board.user.name %>
+</p>
+
+<p>
+
   <%= @board.message %>
 </p>
 
 <p>
-  <strong>画像</strong>
-  <%= @board.image %>
+  <% if @board.image.present? %>
+    <br><br>
+    <td><%= image_tag(url_for(image_of_boards_path(board)),size:'100x100') %></td>
+    </br></br>
+  <% end %>
 </p>
 
-<p>
-  <strong>投稿者</strong>
-  <%= @board.user_id %>
-</p>
-
-
-<%= link_to '削除', @board, method: :delete, data: { confirm: '投稿内容を削除しますか？' } %> |
+<br><br>
+<div align="right"><%= link_to '削除', @board, method: :delete, data: { confirm: '投稿内容を削除しますか？' } %> </div>
 <%= link_to '戻る', boards_path %>
+<br><br>
+<br><br>
+
+<p><b>コメント</b></p>
+<%= form_tag('/comments') do %>
+  <%= hidden_field :comment, :board_id, :value => @board.id %>
+  <p>
+  <%= text_area :comment, :message %>
+  <br>
+  <%= file_field :comment, :image %>
+  <br><br>
+  <%= submit_tag "コメント追加" %>
+  </p>
+<% end %>
+
+<br><br>
+<p>
+  <strong>コメント欄</strong>
+</p>
+</br>
+
+<% @board.comments.each do |comment| %>
+  <p>
+  <div align="left"><%= comment.user_id %></div>
+  <br>
+  <%= comment.created_at %>
+  <br>
+  <%= comment.image %>
+  <br>
+  <%= comment.message %>
+  <br><br>
+  <%= link_to '削除', comment, method: :delete, data: { confirm: 'コメントを削除しますか？' } %>
+  </p>
+<% end %>
+
+

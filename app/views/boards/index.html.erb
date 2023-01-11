@@ -12,16 +12,16 @@
   <% @boards.each do |board| %>
     <tr>
       <br>
-      <td><%= board.icon %></td>
+      <% if board.image.present? %>
+        <br><br>
+        <td><%= image_tag(url_for(image_of_boards_path(board)),size:'100x100') %></td>
+        </br></br>
+      <% end %>
       <br><br>
       <td><%= board.message %></td>
       </br></br>
-      <br><br>
-      <td><%= board.image %></td>
-      </br></br>
       <br>
-      <td><%= board.user_id %> |</td>
-      <td><%= link_to 'コメント', new_comment_path %> |</td>
+      <td><%= link_to '詳細', board %> |</td>
       <td><%= link_to '編集', edit_board_path(board) %> |</td>
       <td><%= link_to '×', board, method: :delete, data: { confirm: 'この投稿を削除しますか？' } %></td>
     </tr>

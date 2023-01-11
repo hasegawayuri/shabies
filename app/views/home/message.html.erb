@@ -21,7 +21,7 @@
       <table class="table table-striped">
   <thead>
     <tr>
-      <th>アイコン</th>
+      <th><center>アイコン</center></th>
       <th>グループ名</th>
       <th>系統</th>
       <th>人数制限</th>
@@ -36,13 +36,12 @@
       <tr>
         <td><%= image_tag(url_for(image_of_groups_path(group)),size:'100x100',class:"rounded-circle") %></td>
         <td><%= group.groupname %></td>
-        <td><%= group.classification_id %></td>
+        <td><%= group.classification.classification %></td>
         <td><%= group.limit %></td>
         <td><%= group.user.name %></td>
         <td><%= group.introduction %></td>
         <td><%= link_to '掲示板', boards_path %></td>
         <td><%= link_to '編集', edit_group_path(group) %></td>
-        <td><%= link_to '脱退', group, method: :delete, data: { confirm: 'このグループを脱退しますか？' } %></td>
       </tr>
     <% end %>
   </tbody>
