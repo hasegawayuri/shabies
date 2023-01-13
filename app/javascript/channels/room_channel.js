@@ -3,7 +3,7 @@ import consumer from "./consumer"
 const appRoom = consumer.subscriptions.create("RoomChannel", {
   connected() {
     // Called when the subscription is ready for use on the server
-    return this.perform("room_select", { room: $for('#chats').data('room_id') });
+    return this.perform("room_select", { room: $('#chats').data('room_id') });
   },
 
   disconnected() {

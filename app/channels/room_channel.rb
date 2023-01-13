@@ -5,7 +5,7 @@ class RoomChannel < ApplicationCable::Channel
   end
 
    #切断されたとき
-　def unsubscribed
+  def unsubscribed
     # Any cleanup needed when channel is unsubscribed
   end
 
