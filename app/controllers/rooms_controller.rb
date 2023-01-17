@@ -8,6 +8,13 @@ class RoomsController < ApplicationController
 
   # GET /rooms/1 or /rooms/1.json
   def show
+      @room = Room.find(params[:id])
+      if Userroom.where(:user_id => current_user.id, :room_id => @room.id).present?
+        @chats = @room.chats
+        @userrooms = @room.userrooms
+      else
+        redirect_to profile_path
+      end
   end
 
   # GET /rooms/new
@@ -21,17 +28,38 @@ class RoomsController < ApplicationController
 
   # POST /rooms or /rooms.json
   def create
-    @room = Room.new(room_params)
+      ActiveRecord::Base.transaction do
+        @room = Room.new
+        @room.save
 
-    respond_to do |format|
-      if @room.save
-        format.html { redirect_to room_url(@room), notice: "Room was successfully created." }
-        format.json { render :show, status: :created, location: @room }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @room.errors, status: :unprocessable_entity }
+
+        # UserRoomにログインユーザーを作成する
+        @userroom1 = Userroom.new(:room_id => @room.id, :user_id => current_user.id)
+        @userroom1.save
+
+
+        #UserRoomにチャット相手を作成する
+        @userroom2 = Userroom.new(:room_id => @room.id, :user_id => params[:userroom][:user_id])
+        @userroom2.save
       end
-    end
+
+      #チャット画面に遷移する
+      redirect_to room_path(@room.id)
+
+
+
+
+    #@room = Room.new(room_params)
+
+  #  respond_to do |format|
+   #   if @room.save
+   #     format.html { redirect_to room_url(@room), notice: "Room was successfully created." }
+   #     format.json { render :show, status: :created, location: @room }
+   #   else
+   #     format.html { render :new, status: :unprocessable_entity }
+   #     format.json { render json: @room.errors, status: :unprocessable_entity }
+    #  end
+    #end
   end
 
   # PATCH/PUT /rooms/1 or /rooms/1.json
@@ -49,12 +77,14 @@ class RoomsController < ApplicationController
 
   # DELETE /rooms/1 or /rooms/1.json
   def destroy
+    @room = Room.find(params[:id])
     @room.destroy
+    redirect_tp profile_path
 
-    respond_to do |format|
-      format.html { redirect_to rooms_url, notice: "Room was successfully destroyed." }
-      format.json { head :no_content }
-    end
+   # respond_to do |format|
+   #   format.html { redirect_to rooms_url, notice: "Room was successfully destroyed." }
+   #   format.json { head :no_content }
+   # end
   end
 
   private

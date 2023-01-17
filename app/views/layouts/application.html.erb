@@ -10,10 +10,11 @@
     <%= javascript_include_tag 'application' %>
   </head>
 
- <body style = margin-bottom: 100px>
+
+ <body style = "margin-bottom: 90px" >
     <div class="container">
       <%= yield %>
-      
+
   <% if logged_in? %> 
   <div class="fixed-bottom bg-secondary">
     <div class="row">
@@ -49,5 +50,6 @@
   </div>
   <% end %>
     </div>
- </body>
+    <%= javascript_pack_tag 'application'%>
+  </body>
 </html>
