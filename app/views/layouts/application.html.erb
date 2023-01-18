@@ -16,33 +16,33 @@
       <%= yield %>
 
   <% if logged_in? %> 
-  <div class="fixed-bottom">
+  <div class="fixed-bottom bg-secondary">
     <div class="row">
-      <hr></hr>
+      <hr></hr>  
       <ul class="nav nav-tabs nav-fill">
       　　<li class="nav-item">
           <%= link_to profile_path, class: 'nav-link' do %>
-                 <h6>ホーム</h6>
+                 <%= image_tag "/images/homeicon.png" %>
                <% end %>  
           </li>
       　  <li class="nav-item">
                <%= link_to messagelist_path, class: 'nav-link' do %>
-                <h6>メッセージ</h6>
+                 <%= image_tag "/images/chaticon.png" %>
                <% end %>
           </li> 
           <li class="nav-item">
              <%= link_to edit_user_path(current_user.id), class: 'nav-link' do %> 
-                  <h6>プロフィール</h6>
-            <% end %>
+                 <%= image_tag "/images/profile.png" %>
+             <% end %>
           </li>
           <li class="nav-item">
                <%= link_to search_path, class: 'nav-link' do %>  
-                   <h6>さがす</h6>
+                 <%= image_tag "/images/searchicon.png" %>
                <% end %>   
           </li>
           <li class="nav-item">
             <%=link_to new_group_path, class: 'nav-link' do %>  
-                  <h6>✚</h6>
+                  <%= image_tag "/images/plusicon.png" %>
             <% end %>
           </li>
       </ul>
