@@ -9,6 +9,6 @@ class HomeController < ApplicationController
     @groups.each do |group|
       group_ids.push(group.id)
     end
-     @members = Member.where(group_id: group_ids)
+     @members = Member.where(group_id: group_ids).select(:user_id).distinct(:user_id)
   end
 end

@@ -59,8 +59,8 @@ class GroupsController < ApplicationController
 
   # PATCH/PUT /groups/1 or /groups/1.json
   def update
-    member = @group.members.build
-    member.user_id = current_user.id
+    #member = @group.members.build
+    #member.user_id = current_user.id
     respond_to do |format|
       if @group.update(group_attributes)
         format.html { redirect_to group_url(@group), notice: "#{group_params[:groupname]}の設定を更新しました" }
