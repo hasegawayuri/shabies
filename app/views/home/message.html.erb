@@ -66,7 +66,7 @@
         <td><%= image_tag(url_for(image_of_groups_path(group)),size:'100x100',class:"rounded-circle") %>
         <br><%= group.groupname %></td>
         <td><%= group.introduction %>（<%= group.classification.classification %>）</td>
-        <td><%= link_to '掲示板', boards_path %>
+        <td nowrap><%= link_to '掲示板', boards_path %>
         <br><br><br><%= link_to '編集', edit_group_path(group) %></td>
       </tr>
 
@@ -93,7 +93,7 @@
       　<td><center><%= image_tag(url_for(image_of_users_path(member.user_id)),size:'100x100',class:"rounded-circle") %>
         <br><%= member.user.name %></center></td>
         
-        <td>
+        <td><center>
         <% unless member.user_id == current_user.id %>
           <% userroom = open_userroom_record(member) %>
           <% if userroom.nil? %>
@@ -116,7 +116,7 @@
 
           <% end %>
         <% end %>
-        </td>
+        </center></td>
         
       </tr>
       <% end %>

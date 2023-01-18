@@ -16,32 +16,32 @@
       <%= yield %>
 
   <% if logged_in? %> 
-  <div class="fixed-bottom bg-secondary">
-    <table class="table">
+  <div class="fixed-bottom bg-light">
+    <table class="table table-borderless" >
       <tr>
-        <td><center>
-          <%= link_to profile_path, class: 'nav-link' do %>
-            <%= image_tag "/images/homeicon.png", style:"max-width: 50%" %>
+        <td valign=middle><center>
+          <%= link_to profile_path, class: 'nav nav-link' do %>
+            <%= image_tag "/images/homeicon.png", style:"max-width: 100%" %>
           <% end %>  
         </center></td>
-        <td><center>
-            <%= link_to messagelist_path, class: 'nav-link' do %>
-              <%= image_tag "/images/chaticon.png", style:"max-width: 50%" %>
+        <td valign=middle><center>
+            <%= link_to messagelist_path, class: 'nav nav-link' do %>
+              <%= image_tag "/images/chaticon.png", style:"max-width: 100%" %>
             <% end %>
         </center></td>
         <td><center>
-            <%= link_to edit_user_path(current_user.id), class: 'nav-link' do %> 
-              <%= image_tag "/images/profile.png", style:"max-width: 50%" %>
+            <%= link_to edit_user_path(current_user.id), class: 'nav nav-link' do %> 
+              <%= image_tag "/images/profile.png", style:"max-width: 100%" %>
             <% end %>
         </center></td>
         <td><center>
-            <%= link_to search_path, class: 'nav-link' do %>  
-              <%= image_tag "/images/searchicon.png", style:"max-width: 50%" %>
+            <%= link_to search_path, class: 'nav nav-link' do %>  
+              <%= image_tag "/images/searchicon.png", style:"max-width: 100%" %>
             <% end %> 
         </center></td>
         <td><center>
-            <%=link_to new_group_path, class: 'nav-link' do %>  
-              <%= image_tag "/images/plusicon.png", style:"max-width: 50%" %>
+            <%=link_to new_group_path, class: 'nav nav-link' do %>  
+              <%= image_tag "/images/plusicon.png", style:"max-width: 100%" %>
             <% end %>
         </center></td>
       </tr>
