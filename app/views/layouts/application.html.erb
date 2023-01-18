@@ -17,36 +17,35 @@
 
   <% if logged_in? %> 
   <div class="fixed-bottom bg-secondary">
-    <div class="row">
-      <hr></hr>  
-      <ul class="nav nav-tabs nav-fill">
-      　　<li class="nav-item">
+    <table class="table">
+      <tr>
+        <td><center>
           <%= link_to profile_path, class: 'nav-link' do %>
-                 <%= image_tag "/images/homeicon.png" %>
-               <% end %>  
-          </li>
-      　  <li class="nav-item">
-               <%= link_to messagelist_path, class: 'nav-link' do %>
-                 <%= image_tag "/images/chaticon.png" %>
-               <% end %>
-          </li> 
-          <li class="nav-item">
-             <%= link_to edit_user_path(current_user.id), class: 'nav-link' do %> 
-                 <%= image_tag "/images/profile.png" %>
-             <% end %>
-          </li>
-          <li class="nav-item">
-               <%= link_to search_path, class: 'nav-link' do %>  
-                 <%= image_tag "/images/searchicon.png" %>
-               <% end %>   
-          </li>
-          <li class="nav-item">
-            <%=link_to new_group_path, class: 'nav-link' do %>  
-                  <%= image_tag "/images/plusicon.png" %>
+            <%= image_tag "/images/homeicon.png", style:"max-width: 50%" %>
+          <% end %>  
+        </center></td>
+        <td><center>
+            <%= link_to messagelist_path, class: 'nav-link' do %>
+              <%= image_tag "/images/chaticon.png", style:"max-width: 50%" %>
             <% end %>
-          </li>
-      </ul>
-    </div>
+        </center></td>
+        <td><center>
+            <%= link_to edit_user_path(current_user.id), class: 'nav-link' do %> 
+              <%= image_tag "/images/profile.png", style:"max-width: 50%" %>
+            <% end %>
+        </center></td>
+        <td><center>
+            <%= link_to search_path, class: 'nav-link' do %>  
+              <%= image_tag "/images/searchicon.png", style:"max-width: 50%" %>
+            <% end %> 
+        </center></td>
+        <td><center>
+            <%=link_to new_group_path, class: 'nav-link' do %>  
+              <%= image_tag "/images/plusicon.png", style:"max-width: 50%" %>
+            <% end %>
+        </center></td>
+      </tr>
+    </table>
   </div>
   <% end %>
     </div>
