@@ -1,4 +1,5 @@
 <p class="<%= chat.id %>" style= "margin-top: 0;">
+    <%= image_tag(url_for(image_of_users_path(chat.user_id)),size:'50x50',class:"rounded-circle") %>
     <%= chat.user.name %>
 </p>
 <p class="<%= chat.id %>">
