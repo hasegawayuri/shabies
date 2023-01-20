@@ -1,25 +1,28 @@
 <p id="notice"><%= notice %></p>
 
-<center><h1><%= "の掲示板" %></h1></center>
+<center><h1><%= "#{@group.groupname}の掲示板" %></h1></center>
 
 <br>
 
 <div align="right"><%= link_to '投稿', new_board_path %></div>
-<div align="left"><%= link_to 'グループ詳細', @group  %>
+<div align="left"><%= link_to '戻る', groups_path %>
+<br>
+<div align="left"><%= link_to 'グループ詳細', @group %>
 
 <br>
 <tbody>
   <% @boards.each do |board| %>
     <tr>
       <br>
+      <td><%= image_tag(url_for(image_of_users_path(board.user_id)),size:'50x50') %></td>
+      <br><br>
+      <td><%= board.message %></td>
+      </br></br>
       <% if board.image.present? %>
         <br><br>
         <td><%= image_tag(url_for(image_of_boards_path(board)),size:'100x100') %></td>
         </br></br>
       <% end %>
-      <br><br>
-      <td><%= board.message %></td>
-      </br></br>
       <br>
       <td><%= link_to '詳細', board %> |</td>
       <td><%= link_to '編集', edit_board_path(board) %> |</td>

@@ -3,9 +3,10 @@ class BoardsController < ApplicationController
 
   # GET /boards or /boards.json
   def index
-    @boards = Board.all
+    session[:group_board] ||= params[:group_id]
+    @boards = Board.where(group_id: session[:group_board])
+    @group = Group.find(session[:group_board])
   end
-
   # GET /boards/1 or /boards/1.json
   def show
   end
@@ -62,6 +63,7 @@ class BoardsController < ApplicationController
     send_data(board.image,disposition: :inline)
   end
 
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_board
@@ -73,8 +75,5 @@ class BoardsController < ApplicationController
       params.require(:board).permit(:group_id, :icon, :message, :image, :user_id)
     end
 
-    def board_name
-      groupname = @group.groupname
-    end
 
 end

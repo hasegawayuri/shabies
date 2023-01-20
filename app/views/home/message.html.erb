@@ -22,7 +22,7 @@
   <thead>
     <tr>
       <th><center>アイコン</center></th>
-      <th>グループ名</th>
+      <th><center>グループ名</center></th>
       <th>系統</th>
       <th>人数制限</th>
       <th>作成者</th>
@@ -40,7 +40,7 @@
         <td><%= group.limit %></td>
         <td><%= group.user.name %></td>
         <td><%= group.introduction %></td>
-        <td><%= link_to '掲示板', boards_path %></td>
+        <td><%= link_to '掲示板', boards_path(group_id: group.id) %></td>
         <td><%= link_to '編集', edit_group_path(group) %></td>
       </tr>
     <% end %>

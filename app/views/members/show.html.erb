@@ -1,14 +1,26 @@
 <p id="notice"><%= notice %></p>
+<br>
+<%= link_to '一覧へ', members_path %>
+</br>
 
-<p>
-  <strong>メンバー名</strong>
-  <%= @member.user_id %>
-</p>
+<br>
+<p class="fs-4">アイコン</p> 
+<center><%= image_tag(url_for(image_of_users_path(@member.user)),size:'150x150',class:"rounded-circle") %></center>
+</br>
+<br>
+<p class="fs-4">ニックネーム</p> 
+<p><h5><%= @member.user.name %></h5></p>
+</br> 
+<br>
+<p class="fs-4">年齢</p>
+<p><h5><%= @member.user.age %></h5></p>
+</br> 
+<br><br>
+<p class="fs-4">趣味</p>
+<p><h5><%= @member.user.hobby %></h5></p>
+</br></br> 
+<br><br>
+<p class="fs-4">自己紹介文</p>
+<p><h5><%= @member.user.introduction %></h5></p>
+</br></br>
 
-<p>
-  <strong>グループ名</strong>
-  <%= @member.group_id %>
-</p>
-
-<%= link_to 'Edit', edit_member_path(@member) %> |
-<%= link_to 'Back', members_path %>
