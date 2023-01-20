@@ -8,7 +8,7 @@ class UsersController < ApplicationController
     def create
       @user = User.new(user_params)
 
-      image_path = Rails.root.join("public/images/", "rails.png")
+      image_path = Rails.root.join("public/images/", "rails.jpg")
       File.open(image_path, "r+b") do |f|
         @user.icon = f.read
       end

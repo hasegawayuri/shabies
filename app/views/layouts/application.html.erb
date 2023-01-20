@@ -10,44 +10,45 @@
     <%= javascript_include_tag 'application' %>
   </head>
 
- <body style = margin-bottom: 100px>
+
+ <body style = "margin-bottom: 120px" >
     <div class="container">
       <%= yield %>
-      
+
   <% if logged_in? %> 
-  <div class="fixed-bottom">
-    <div class="row">
-      <hr></hr>
-      <ul class="nav nav-tabs nav-fill">
-      　　<li class="nav-item">
-          <%= link_to profile_path, class: 'nav-link' do %>
-                 <h6>ホーム</h6>
-               <% end %>  
-          </li>
-      　  <li class="nav-item">
-               <%= link_to messagelist_path, class: 'nav-link' do %>
-                <h6>メッセージ</h6>
-               <% end %>
-          </li> 
-          <li class="nav-item">
-             <%= link_to edit_user_path(current_user.id), class: 'nav-link' do %> 
-                  <h6>プロフィール</h6>
+  <div class="fixed-bottom bg-light">
+    <table class="table table-borderless" >
+      <tr>
+        <td valign=middle><center>
+          <%= link_to profile_path, class: 'nav nav-link' do %>
+            <%= image_tag "/images/homeicon.png", style:"max-width: 100%" %>
+          <% end %>  
+        </center></td>
+        <td valign=middle><center>
+            <%= link_to messagelist_path, class: 'nav nav-link' do %>
+              <%= image_tag "/images/chaticon.png", style:"max-width: 100%" %>
             <% end %>
-          </li>
-          <li class="nav-item">
-               <%= link_to search_path, class: 'nav-link' do %>  
-                   <h6>さがす</h6>
-               <% end %>   
-          </li>
-          <li class="nav-item">
-            <%=link_to new_group_path, class: 'nav-link' do %>  
-                  <h6>✚</h6>
+        </center></td>
+        <td><center>
+            <%= link_to edit_user_path(current_user.id), class: 'nav nav-link' do %> 
+              <%= image_tag "/images/profile.png", style:"max-width: 100%" %>
             <% end %>
-          </li>
-      </ul>
-    </div>
+        </center></td>
+        <td><center>
+            <%= link_to search_path, class: 'nav nav-link' do %>  
+              <%= image_tag "/images/searchicon.png", style:"max-width: 100%" %>
+            <% end %> 
+        </center></td>
+        <td><center>
+            <%=link_to new_group_path, class: 'nav nav-link' do %>  
+              <%= image_tag "/images/plusicon.png", style:"max-width: 100%" %>
+            <% end %>
+        </center></td>
+      </tr>
+    </table>
   </div>
   <% end %>
     </div>
- </body>
+    <%= javascript_pack_tag 'application'%>
+  </body>
 </html>
