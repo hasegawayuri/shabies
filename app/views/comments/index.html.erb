@@ -19,9 +19,9 @@
         <td><%= comment.message %></td>
         <td><%= comment.integer %></td>
         <td><%= comment.image %></td>
-        <td><%= link_to '詳細', comment %></td>
-        <td><%= link_to '編集', edit_comment_path(comment) %></td>
-        <td><%= link_to '削除', comment, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to '詳細', comment %> | </td>
+        <td><%= link_to '編集', edit_comment_path(comment) %> | </td>
+        <td><%= link_to '削除', comment, method: :delete, data: { confirm: 'コメントを削除しますか？' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -29,4 +29,4 @@
 
 <br>
 
-<%= link_to 'New Comment', new_comment_path %>
+<%= link_to 'コメント', new_comment_path %>

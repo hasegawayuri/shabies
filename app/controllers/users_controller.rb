@@ -27,7 +27,6 @@ class UsersController < ApplicationController
         @user = User.find(current_user.id)
         respond_to do |format|
           if @user.update(user_attributes)
-            format.html { redirect_to user_url(@user), notice: "User was successfully updated." }
             format.json { render :show, status: :ok, location: @user }
           else
             format.html { render :edit, status: :unprocessable_entity }
@@ -39,7 +38,7 @@ class UsersController < ApplicationController
 
     def show
       @user = User.find(current_user.id)
-
+      session[:user_link] = nil
       @groups=Group.joins(:members).where(members:{user_id:current_user.id})
 
       group_ids = []

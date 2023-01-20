@@ -34,13 +34,10 @@
 </p>
 
 <p>
-  <strong>メンバー一覧</strong>
-  <br><br>
-  <%= @group.user.name %>
-  </br></br>
+  <%= link_to 'メンバー一覧', members_path(group_id: @group.id) %>
 </p>
 
-<%= link_to '掲示板', boards_path %>|
+<%= link_to '掲示板', boards_path(group_id: @group.id) %>|
 <%= link_to 'グループ設定編集', edit_group_path(@group) %> |
 <%= link_to 'グループ削除', @group, method: :delete, data: { confirm: 'グループが削除されます。実行しますか？' } %> |
 

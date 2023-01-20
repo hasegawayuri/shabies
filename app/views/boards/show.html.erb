@@ -1,11 +1,10 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <%= @board.icon %>
-</p>
-
-<p>
-  <strong>投稿者:</strong>
+  <strong>投稿者</strong>
+  <br><br>
+  <%= image_tag(url_for(image_of_users_path(@board.user_id)),size:'40x40') %>
+  <br>
   <%= @board.user.name %>
 </p>
 

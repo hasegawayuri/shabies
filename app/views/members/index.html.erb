@@ -1,29 +1,33 @@
 <p id="notice"><%= notice %></p>
 
-<h2>所属メンバー一覧</h2>
+<center><h1><%= "#{@group.groupname}参加メンバー一覧"%></h1></center>
 
 <table>
   <thead>
     <tr>
-      <th>所属メンバー</th>
-      <th>グループ名</th>
+      <th>メンバー名</th>
       <th colspan="3"></th>
     </tr>
   </thead>
-
+<% exist = false %>
   <tbody>
     <% @members.each do |member| %>
       <tr>
-        <td><%= member.user_id %></td>
-        <td><%= member.group_id %></td>
+        <td><%= member.user.name %></td>
         <td><%= link_to 'メンバー詳細', member %></td>
         <td><%= link_to 'メンバー編集', edit_member_path(member) %></td>
         <td><%= link_to '脱退', member, method: :delete, data: { confirm: 'このグループを脱退しますか？' } %></td>
       </tr>
+      <% exist = true if current_user.id == member.user_id %>
     <% end %>
   </tbody>
 </table>
 
 <br>
+<% if exist %>
+  <br>
+<% else %>
+  <%= link_to '参加', new_member_path %>
+<% end %>
 
-<%= link_to '参加', new_member_path %>
+<%= link_to '掲示板', boards_path %>
