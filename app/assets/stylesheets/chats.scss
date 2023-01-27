@@ -43,3 +43,18 @@
     border: 15px solid transparent;
     border-right: 15px solid #e0edff;
 }
+
+.icon-right{
+    float: right;
+    text-align: center;
+}
+
+.icon-left{
+    float: left;
+    text-align: center;
+    margin-right: 10px
+}
+
+.chat_massage{
+    overflow-wrap: break-word;
+}

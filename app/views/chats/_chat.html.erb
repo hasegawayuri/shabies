@@ -1,10 +1,13 @@
-<p class="<%= chat.id %>" style= "margin-top: 0;">
-    <%= chat.user.name %>
-</p>
+
+   
 <p class="<%= chat.id %>">
+      <span class="icon">
+         <%= image_tag(url_for(image_of_users_path(chat.user_id)),size:'50x50',class:"rounded-circle") %>
+         <br><%= chat.user.name %>
+      </span>
     <span class="balloon">
-        <h7 class="chat_message"><%= chat.message %></h7><br>
-        <h7 style="color: #C0C0C0;"><%= chat.created_at.strftime("%Y/%m/%d %H:%M") %></h7>
+      <h7 class="chat_message"><%= chat.message %></h7><br>
+      <h7 style="color: #C0C0C0;"><%= chat.created_at.strftime("%Y/%m/%d %H:%M") %></h7>
     </span>
 </p>
 <br>
@@ -21,9 +24,11 @@
     if(chat == current_user){
       $('p.' + <%= chat.id %>).css('text-align', 'right');
       $('p.' + <%= chat.id %> + ' .balloon').addClass('balloon-right');
+      $('p.' + <%= chat.id %> + ' .icon').addClass('icon-right');
     }else{
       $('p.' + <%= chat.id %>).css('text-align', 'left');
       $('p.' + <%= chat.id %> + ' .balloon').addClass('balloon-left');
+      $('p.' + <%= chat.id %> + ' .icon').addClass('icon-left');
     }
     var element = document.getElementById('chat_input'); //移動させたい位置の要素を取得
     element.scrollIntoView();
