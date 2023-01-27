@@ -63,10 +63,10 @@
   <tbody>
     <% @groups.each do |group| %>
       <tr>
-        <td><%= image_tag(url_for(image_of_groups_path(group)),size:'100x100',class:"rounded-circle") %>
+        <td><%= image_tag(url_for(image_of_groups_path(group)),size:'80x80',class:"rounded-circle") %>
         <br><%= group.groupname %></td>
         <td><%= group.introduction %>（<%= group.classification.classification %>）</td>
-        <td nowrap><%= link_to '掲示板', boards_path %>
+        <td nowrap><%= link_to '掲示板', boards_path(group_id: group.id) %>
         <br><br><br><%= link_to '編集', edit_group_path(group) %></td>
       </tr>
 

@@ -26,10 +26,10 @@ class MembersController < ApplicationController
   # POST /members or /members.json
   def create
     @member = Member.new(member_params)
-
+     
     respond_to do |format|
       if @member.save
-        format.html { redirect_to groups_url(@member), notice: "#{@group.groupname}に参加しました" }
+        format.html { redirect_to groups_url, notice: "参加しました" }
         format.json { render :show, status: :created, location: @member }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -42,6 +42,7 @@ class MembersController < ApplicationController
   def update
     respond_to do |format|
       if @member.update(member_params)
+        format.html { redirect_to groups_url(@member) }
         format.json { render :show, status: :ok, location: @member }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -52,11 +53,11 @@ class MembersController < ApplicationController
 
   # DELETE /members/1 or /members/1.json
   def destroy
-    groupname = @group.groupname
+
     @member.destroy
 
     respond_to do |format|
-      format.html { redirect_to groups_url, notice: "#{groupname}から脱退しました" }
+      format.html { redirect_to groups_url, notice: "脱退しました" }
       format.json { head :no_content }
     end
   end

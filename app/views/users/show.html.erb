@@ -27,27 +27,61 @@
  
   <br><br>
     <div class="col">
-       <br><br>    
-         <p class="fs-3">グループ</p>
+      <br><br>    
+        <p class="fs-3">グループ</p>
 
-         <div class="row">
-         <% @groups.each do |group| %>
-           <div class="col-md-2">
-             <%= image_tag(url_for(image_of_groups_path(group)),size:'100x100',class:"rounded-circle") %>
-           </div>
-         <% end %>
-         </div>
+        <div class="row">
+        <% @groups.each do |group| %>
+          <div class="col-md-2">
+            <%= image_tag(url_for(image_of_groups_path(group)),size:'100x100',class:"rounded-circle") %>
+          </div>
+        <% end %>
+        </div>
 
        </br></br>
-       <br><br>
-         <p class="fs-3">個人</p>
+        <br><br>
+        <p class="fs-3">個人</p>
 
-         <div class="row">
-         <% @members.each do |member| %>
+        <div class="row">
+         <!-- <% @members.each do |member| %>
            <div class="col-md-2">
              <%= image_tag(url_for(image_of_users_path(member.user_id)),size:'100x100',class:"rounded-circle") %>
            </div>
-         <% end %>
-         </div>    
+         <% end %>-->
+          <% @members.each do |member| %>
+            <% unless member.user_id == current_user.id %>
+            <tr>
+      　      <td><center><%= image_tag(url_for(image_of_users_path(member.user_id)),size:'100x100',class:"rounded-circle") %>
+              <br><%= member.user.name %></center></td>
+        
+              <td><center>
+              <% unless member.user_id == current_user.id %>
+                <% userroom = open_userroom_record(member) %>
+                <% if userroom.nil? %>
+
+            <!--相手とのチャットルームがない>
+                <%= form_for Room.new, url: rooms_path do |r| %>
+                  <%= fields_for Userroom.new do |ul| %>
+                    <%= ul.hidden_field :user_id, :value=> member.user_id %>
+                  <% end %>
+                  <%= button_tag "チャットを始める", type:"submit", id: "chat_submit" %>
+                <% end %>
+
+              <% else %>
+
+
+            <相手とのチャットルームがある>
+                <%= link_to room_path(userroom.room_id) do %>
+                  <%= button_tag"チャットを続ける", id: "chat_submit" %>
+                <% end %>-->
+
+              <% end %>
+            <% end %>
+            </center></td>
+        
+            </tr>
+            <% end %>
+          <% end %>
+        </div>    
     </div>
   </br></br>

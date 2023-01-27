@@ -1,7 +1,10 @@
 <p id="notice"><%= notice %></p>
 
 <center><h1><%= "#{@group.groupname}参加メンバー一覧"%></h1></center>
-
+<br>
+<%= link_to '掲示板', boards_path(group_id: @group.id) %>
+</br>
+<br><br>
 <table>
   <thead>
     <tr>
@@ -13,10 +16,13 @@
   <tbody>
     <% @members.each do |member| %>
       <tr>
+      <% if member.user_id.nil? %>
+        <br>
+      <% else %>
         <td><%= member.user.name %></td>
         <td><%= link_to 'メンバー詳細', member %></td>
-        <td><%= link_to 'メンバー編集', edit_member_path(member) %></td>
-        <td><%= link_to '脱退', member, method: :delete, data: { confirm: 'このグループを脱退しますか？' } %></td>
+        <td>  <%= link_to '脱退', member, method: :delete, data: { confirm: 'このグループを脱退しますか？' } %></td>
+      <% end %>
       </tr>
       <% exist = true if current_user.id == member.user_id %>
     <% end %>
@@ -24,10 +30,9 @@
 </table>
 
 <br>
+
 <% if exist %>
   <br>
 <% else %>
-  <%= link_to '参加', new_member_path %>
+  <div align="left"> <%= link_to '参加', new_member_path %></div>
 <% end %>
-
-<%= link_to '掲示板', boards_path %>

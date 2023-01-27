@@ -4,8 +4,6 @@
   <strong>投稿者</strong>
   <br><br>
   <%= image_tag(url_for(image_of_users_path(@board.user_id)),size:'40x40') %>
-  <br>
-  <%= @board.user.name %>
 </p>
 
 <p>
@@ -47,7 +45,7 @@
 
 <% @board.comments.each do |comment| %>
   <p>
-  <div align="left"><%= comment.user_id %></div>
+  <%= image_tag(url_for(image_of_users_path(comment.user_id)),size:'40x40') %>
   <br>
   <%= comment.created_at %>
   <br>

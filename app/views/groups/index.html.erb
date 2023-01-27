@@ -24,7 +24,7 @@
                  <%= f.submit "参加" %>
             <% end %>
           <% else %>
-            <%= form_with(model: Member.new) do |f| %>
+            <%= form_with(model: member, method: :delete) do |f| %>
                  <%= f.hidden_field :group_id, :value => group.id %>
                  <%= f.hidden_field :user_id, :value => current_user.id %>
                  <%= f.submit "脱退" %>   

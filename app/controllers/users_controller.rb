@@ -27,10 +27,10 @@ class UsersController < ApplicationController
         @user = User.find(current_user.id)
         respond_to do |format|
           if @user.update(user_attributes)
-            format.json { render :show, status: :ok, location: @user }
+            format.html { redirect_to profile_path }  
           else
             format.html { render :edit, status: :unprocessable_entity }
-            format.json { render json: @user.errors, status: :unprocessable_entity }
+        
           end
         end
       end
