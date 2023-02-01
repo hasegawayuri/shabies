@@ -3,6 +3,7 @@ class HomeController < ApplicationController
   def top
   end
   def message
+    session[:group_board] = nil
     @groups=Group.joins(:members).where(members: { user_id: current_user.id })
 
     group_ids = []
